@@ -30,12 +30,28 @@ public class CalculatorController {
 				case BTN_7:				keepTypingNext(7);			break;
 				case BTN_8:				keepTypingNext(8);			break;
 				case BTN_9:				keepTypingNext(9);			break;
-				case BTN_ADD:			break;
-				case BTN_SUBTRACT:		break;
-				case BTN_MULTIPLY:		break;
-				case BTN_DIVIDE:		break;
-				case BTN_EQUALS:		break;
-				case BTN_CLEAR:			clear();					break;
+				case BTN_ADD:
+					enter();
+					calculatorModel.setOperation(OPERATION_ADD);
+					break;
+				case BTN_SUBTRACT:
+					enter();
+					calculatorModel.setOperation(OPERATION_SUBTRACT);
+					break;
+				case BTN_MULTIPLY:
+					enter();
+					calculatorModel.setOperation(OPERATION_MULTIPLY);
+					break;
+				case BTN_DIVIDE:
+					enter();
+					calculatorModel.setOperation(OPERATION_DIVIDE);
+					break;
+				case BTN_EQUALS:
+					enter();
+					break;
+				case BTN_CLEAR:
+					clear();
+					break;
 				}
 			}
 		});
@@ -46,13 +62,58 @@ public class CalculatorController {
 		calculatorModel.setNext(oldNext * 10 + digit);
 	}
 	
-	private void performOperation(int operation) {
+	private void performAddition() {
+		int oldTotal = calculatorModel.getTotal();
+		int oldNext = calculatorModel.getNext();
 		
+		calculatorModel.setNext(0);
+		calculatorModel.setTotal(oldTotal + oldNext);
+	}
+	
+	private void performSubtraction() {
+		int oldTotal = calculatorModel.getTotal();
+		int oldNext = calculatorModel.getNext();
+		
+		calculatorModel.setNext(0);
+		calculatorModel.setTotal(oldTotal - oldNext);
+	}
+	
+	private void performMultiplication() {
+		int oldTotal = calculatorModel.getTotal();
+		int oldNext = calculatorModel.getNext();
+		
+		calculatorModel.setNext(0);
+		calculatorModel.setTotal(oldTotal * oldNext);
+	}
+	
+	private void performDivision() {
+		int oldTotal = calculatorModel.getTotal();
+		int oldNext = calculatorModel.getNext();
+		
+		calculatorModel.setNext(0);
+		calculatorModel.setTotal(oldTotal / oldNext);
 	}
 	
 	private void clear() {
 		calculatorModel.setTotal(0);
 		calculatorModel.setNext(0);
-		calculatorModel.setOperation(OPERATION_NONE);
+		calculatorModel.setOperation(OPERATION_ADD);
+	}
+	
+	private void enter() {
+		switch (calculatorModel.getOperation()) {
+		case OPERATION_ADD:
+			performAddition();
+			break;
+		case OPERATION_SUBTRACT:
+			performSubtraction();
+			break;
+		case OPERATION_MULTIPLY:
+			performMultiplication();
+			break;
+		case OPERATION_DIVIDE:
+			performDivision();
+			break;
+		}
 	}
 }

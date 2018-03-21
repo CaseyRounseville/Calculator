@@ -1,3 +1,74 @@
-CalculatorEventSystem: registering handler view.CalculatorView$1 for event event.NextChangedEvent
-CalculatorEventSystem: registering handler view.CalculatorView$2 for event event.TotalChangedEvent
+CalculatorEventSystem: registering handler view.CalculatorView$1 for event event.TotalChangedEvent
+CalculatorEventSystem: registering handler view.CalculatorView$2 for event event.NextChangedEvent
+CalculatorEventSystem: registering handler view.CalculatorView$3 for event event.OperationChangedEvent
 CalculatorEventSystem: registering handler controller.CalculatorController$1 for event event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.TotalChangedEvent
+CalculatorEventSystem: handling event class event.OperationChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.TotalChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.TotalChangedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.OperationChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.TotalChangedEvent
+CalculatorEventSystem: handling event class event.OperationChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.TotalChangedEvent
+CalculatorEventSystem: handling event class event.OperationChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.TotalChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.TotalChangedEvent
+CalculatorEventSystem: handling event class event.OperationChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.TotalChangedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.OperationChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.TotalChangedEvent
+CalculatorEventSystem: handling event class event.OperationChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.TotalChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.TotalChangedEvent
+CalculatorEventSystem: handling event class event.OperationChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.ButtonPressedEvent
+CalculatorEventSystem: handling event class event.NextChangedEvent
+CalculatorEventSystem: handling event class event.TotalChangedEvent

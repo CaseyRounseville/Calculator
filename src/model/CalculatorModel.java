@@ -3,6 +3,7 @@ package model;
 import event.CalculatorEventSystem;
 import event.NextChangedEvent;
 import event.TotalChangedEvent;
+import event.OperationChangedEvent;
 
 public class CalculatorModel {
 	public static final int BTN_0				= 0,
@@ -25,8 +26,7 @@ public class CalculatorModel {
 	public static final int OPERATION_ADD		= 0,
 							OPERATION_SUBTRACT	= 1,
 							OPERATION_MULTIPLY	= 2,
-							OPERATION_DIVIDE	= 3,
-							OPERATION_NONE		= 4;
+							OPERATION_DIVIDE	= 3;
 	
 	private int total;
 	private int next;
@@ -35,7 +35,7 @@ public class CalculatorModel {
 	public CalculatorModel() {
 		total = 0;
 		next = 0;
-		operation = OPERATION_NONE;
+		operation = OPERATION_ADD;
 	}
 	
 	public void setNext(int next) {
@@ -58,6 +58,7 @@ public class CalculatorModel {
 	
 	public void setOperation(int operation) {
 		this.operation = operation;
+		CalculatorEventSystem.getInstance().dispatchEvent(new OperationChangedEvent(operation));
 	}
 	
 	public int getOperation() {

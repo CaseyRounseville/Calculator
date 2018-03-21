@@ -12,6 +12,7 @@ import event.CalculatorEventHandler;
 import event.ButtonPressedEvent;
 import event.NextChangedEvent;
 import event.TotalChangedEvent;
+import event.OperationChangedEvent;
 
 import model.CalculatorModel;
 import static model.CalculatorModel.*;
@@ -39,7 +40,9 @@ public class CalculatorView extends GridPane {
 	
 	private Button btnClear;
 	
-	private Label lblScreen;
+	private Label lblTotal;
+	private Label lblNext;
+	private Label lblOperation;
 	
 	public CalculatorView(CalculatorModel calculatorModel) {
 		this.calculatorModel = calculatorModel;
@@ -82,17 +85,41 @@ public class CalculatorView extends GridPane {
 			}
 		});
 		
-		lblScreen = new Label("0");
-		CalculatorEventSystem.getInstance().registerEventHandler(NextChangedEvent.class, new CalculatorEventHandler<NextChangedEvent>() {
-			@Override
-			public void handle(NextChangedEvent event) {
-				lblScreen.setText("" + event.getNext());
-			}
-		});
+		lblTotal = new Label("Total:\t0");
 		CalculatorEventSystem.getInstance().registerEventHandler(TotalChangedEvent.class, new CalculatorEventHandler<TotalChangedEvent>() {
 			@Override
 			public void handle(TotalChangedEvent event) {
-				lblScreen.setText("" + event.getTotal());
+				lblTotal.setText("Total:\t" + event.getTotal());
+			}
+		});
+		
+		lblNext = new Label("Next:\t0");
+		CalculatorEventSystem.getInstance().registerEventHandler(NextChangedEvent.class, new CalculatorEventHandler<NextChangedEvent>() {
+			@Override
+			public void handle(NextChangedEvent event) {
+				lblNext.setText("Next:\t" + event.getNext());
+			}
+		});
+		
+		lblOperation = new Label("Op:\t+");
+		CalculatorEventSystem.getInstance().registerEventHandler(OperationChangedEvent.class, new CalculatorEventHandler<OperationChangedEvent>() {
+			@Override
+			public void handle(OperationChangedEvent event) {
+				int operation = event.getOperation();
+				switch (operation) {
+				case OPERATION_ADD:
+					lblOperation.setText("Next:\t" + "ADD");
+					break;
+				case OPERATION_SUBTRACT:
+					lblOperation.setText("Next:\t" + "SUB");
+					break;
+				case OPERATION_MULTIPLY:
+					lblOperation.setText("Next:\t" + "MUL");
+					break;
+				case OPERATION_DIVIDE:
+					lblOperation.setText("Next:\t" + "DIV");
+					break;
+				}
 			}
 		});
 		
@@ -109,7 +136,9 @@ public class CalculatorView extends GridPane {
 	
 	private void arrange() {
 		// control, col, row
-		add(lblScreen,			0,			0);
+		add(lblTotal,			0,			0);
+		add(lblOperation,		1,			0);
+		add(lblNext,			2,			0);
 		
 		add(btn1,				0,			1);
 		add(btn2,				1,			1);

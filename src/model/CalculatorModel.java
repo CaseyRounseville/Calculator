@@ -1,5 +1,9 @@
 package model;
 
+import event.CalculatorEventSystem;
+import event.NextChangedEvent;
+import event.TotalChangedEvent;
+
 public class CalculatorModel {
 	public static final int BTN_0				= 0,
 							BTN_1				= 1,
@@ -35,15 +39,25 @@ public class CalculatorModel {
 	}
 	
 	public void setNext(int next) {
-		
+		this.next = next;
+		CalculatorEventSystem.getInstance().dispatchEvent(new NextChangedEvent(next));
 	}
 	
 	public int getNext() {
 		return next;
 	}
 	
-	public void setOperation() {
-		
+	public int getTotal() {
+		return total;
+	}
+	
+	public void setTotal(int total) {
+		this.total = total;
+		CalculatorEventSystem.getInstance().dispatchEvent(new TotalChangedEvent(total));
+	}
+	
+	public void setOperation(int operation) {
+		this.operation = operation;
 	}
 	
 	public int getOperation() {

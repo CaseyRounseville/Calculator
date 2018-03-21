@@ -1,0 +1,3 @@
+CalculatorEventSystem: registering handler view.CalculatorView$1 for event event.NextChangedEvent
+CalculatorEventSystem: registering handler view.CalculatorView$2 for event event.TotalChangedEvent
+CalculatorEventSystem: registering handler controller.CalculatorController$1 for event event.ButtonPressedEvent

@@ -15,5 +15,5 @@ public abstract class CalculatorEventHandler<T extends CalculatorEvent> {
 		return oneShot;
 	}
 	
-	public abstract <T> void handle(T t);
+	public abstract void handle(T t);
 }

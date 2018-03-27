@@ -20,8 +20,9 @@ public class CalculatorModel {
 							BTN_SUBTRACT		= 12,
 							BTN_MULTIPLY		= 13,
 							BTN_DIVIDE			= 14,
-							BTN_EQUALS			= 15,
-							BTN_CLEAR			= 16;
+							BTN_SIGN			= 15,
+							BTN_EQUALS			= 16,
+							BTN_CLEAR			= 17;
 	
 	public static final int OPERATION_ADD		= 0,
 							OPERATION_SUBTRACT	= 1,
@@ -32,10 +33,13 @@ public class CalculatorModel {
 	private int next;
 	private int operation;
 	
+	private boolean justHitEnter;
+	
 	public CalculatorModel() {
 		total = 0;
 		next = 0;
 		operation = OPERATION_ADD;
+		justHitEnter = true;
 	}
 	
 	public void setNext(int next) {
@@ -63,5 +67,13 @@ public class CalculatorModel {
 	
 	public int getOperation() {
 		return operation;
+	}
+	
+	public boolean hasJustHitEnter() {
+		return justHitEnter;
+	}
+	
+	public void setJustHitEnter(boolean justHitEnter) {
+		this.justHitEnter = justHitEnter;
 	}
 }

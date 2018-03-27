@@ -32,22 +32,30 @@ public class CalculatorController {
 				case BTN_9:				keepTypingNext(9);			break;
 				case BTN_ADD:
 					enter();
+					calculatorModel.setJustHitEnter(false);
 					calculatorModel.setOperation(OPERATION_ADD);
 					break;
 				case BTN_SUBTRACT:
 					enter();
+					calculatorModel.setJustHitEnter(false);
 					calculatorModel.setOperation(OPERATION_SUBTRACT);
 					break;
 				case BTN_MULTIPLY:
 					enter();
+					calculatorModel.setJustHitEnter(false);
 					calculatorModel.setOperation(OPERATION_MULTIPLY);
 					break;
 				case BTN_DIVIDE:
 					enter();
+					calculatorModel.setJustHitEnter(false);
 					calculatorModel.setOperation(OPERATION_DIVIDE);
+					break;
+				case BTN_SIGN:
+					changeSign();
 					break;
 				case BTN_EQUALS:
 					enter();
+					calculatorModel.setJustHitEnter(true);
 					break;
 				case BTN_CLEAR:
 					clear();
@@ -58,8 +66,16 @@ public class CalculatorController {
 	}
 	
 	private void keepTypingNext(int digit) {
+		if (calculatorModel.hasJustHitEnter()) {
+			clear();
+		}
 		int oldNext = calculatorModel.getNext();
 		calculatorModel.setNext(oldNext * 10 + digit);
+		calculatorModel.setJustHitEnter(false);
+	}
+	
+	private void changeSign() {
+		calculatorModel.setNext(calculatorModel.getNext() * -1);
 	}
 	
 	private void performAddition() {
@@ -90,6 +106,10 @@ public class CalculatorController {
 		int oldTotal = calculatorModel.getTotal();
 		int oldNext = calculatorModel.getNext();
 		
+		if (oldNext == 0) {
+			return;
+		}
+		
 		calculatorModel.setNext(0);
 		calculatorModel.setTotal(oldTotal / oldNext);
 	}
@@ -98,9 +118,13 @@ public class CalculatorController {
 		calculatorModel.setTotal(0);
 		calculatorModel.setNext(0);
 		calculatorModel.setOperation(OPERATION_ADD);
+		calculatorModel.setJustHitEnter(true);
 	}
 	
 	private void enter() {
+		if (calculatorModel.hasJustHitEnter()) {
+			return;
+		}
 		switch (calculatorModel.getOperation()) {
 		case OPERATION_ADD:
 			performAddition();

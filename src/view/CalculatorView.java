@@ -36,6 +36,8 @@ public class CalculatorView extends GridPane {
 	private Button btnMultiply;
 	private Button btnDivide;
 	
+	private Button btnSign;
+	
 	private Button btnEquals;
 	
 	private Button btnClear;
@@ -61,6 +63,7 @@ public class CalculatorView extends GridPane {
 		btnSubtract		= makeButton("-", BTN_SUBTRACT);
 		btnMultiply		= makeButton("*", BTN_MULTIPLY);
 		btnDivide		= makeButton("/", BTN_DIVIDE);
+		btnSign			= makeButton("+/-", BTN_SIGN);
 		btnEquals		= makeButton("=", BTN_EQUALS);
 		btnClear		= makeButton("CLEAR", BTN_CLEAR);
 		
@@ -73,19 +76,32 @@ public class CalculatorView extends GridPane {
 			case DIGIT5:			btn5.fire();			break;
 			case DIGIT6:			btn6.fire();			break;
 			case DIGIT7:			btn7.fire();			break;
-			case DIGIT8:			btn8.fire();			break;
+			case DIGIT8:
+				if (event.isShiftDown()) {
+					btnMultiply.fire();
+				} else {
+					btn8.fire();
+				}
+				break;
 			case DIGIT9:			btn9.fire();			break;
 			case DIGIT0:			btn0.fire();			break;
 			case PLUS:				btnAdd.fire();			break;
 			case MINUS:				btnSubtract.fire();		break;
 			case ASTERISK:			btnMultiply.fire();		break;
 			case SLASH:				btnDivide.fire();		break;
-			case EQUALS:			btnEquals.fire();		break;
+			case EQUALS:
+				if (event.isShiftDown()) {
+					btnAdd.fire();
+				} else {
+					btnEquals.fire();
+				}
+				break;
 			case BACK_SPACE:		btnClear.fire();		break;
 			}
 		});
 		
 		lblTotal = new Label("Total:\t0");
+		lblTotal.setStyle("-fx-font-size:32pt");
 		CalculatorEventSystem.getInstance().registerEventHandler(TotalChangedEvent.class, new CalculatorEventHandler<TotalChangedEvent>() {
 			@Override
 			public void handle(TotalChangedEvent event) {
@@ -94,6 +110,7 @@ public class CalculatorView extends GridPane {
 		});
 		
 		lblNext = new Label("Next:\t0");
+		lblNext.setStyle("-fx-font-size:32pt");
 		CalculatorEventSystem.getInstance().registerEventHandler(NextChangedEvent.class, new CalculatorEventHandler<NextChangedEvent>() {
 			@Override
 			public void handle(NextChangedEvent event) {
@@ -102,22 +119,23 @@ public class CalculatorView extends GridPane {
 		});
 		
 		lblOperation = new Label("Op:\t+");
+		lblOperation.setStyle("-fx-font-size:32pt");
 		CalculatorEventSystem.getInstance().registerEventHandler(OperationChangedEvent.class, new CalculatorEventHandler<OperationChangedEvent>() {
 			@Override
 			public void handle(OperationChangedEvent event) {
 				int operation = event.getOperation();
 				switch (operation) {
 				case OPERATION_ADD:
-					lblOperation.setText("Next:\t" + "ADD");
+					lblOperation.setText("Op:\t" + "ADD");
 					break;
 				case OPERATION_SUBTRACT:
-					lblOperation.setText("Next:\t" + "SUB");
+					lblOperation.setText("Op:\t" + "SUB");
 					break;
 				case OPERATION_MULTIPLY:
-					lblOperation.setText("Next:\t" + "MUL");
+					lblOperation.setText("Op:\t" + "MUL");
 					break;
 				case OPERATION_DIVIDE:
-					lblOperation.setText("Next:\t" + "DIV");
+					lblOperation.setText("Op:\t" + "DIV");
 					break;
 				}
 			}
@@ -128,6 +146,8 @@ public class CalculatorView extends GridPane {
 	
 	private Button makeButton(String text, int btnNum) {
 		Button btn = new Button(text);
+		btn.setPrefWidth(80);
+		btn.setPrefHeight(80);
 		btn.setOnAction((event) -> {
 			CalculatorEventSystem.getInstance().dispatchEvent(new ButtonPressedEvent(btnNum));
 		});
@@ -136,30 +156,34 @@ public class CalculatorView extends GridPane {
 	
 	private void arrange() {
 		// control, col, row
-		add(lblTotal,			0,			0);
-		add(lblOperation,		1,			0);
-		add(lblNext,			2,			0);
+		// control, col, row, colspan, rowspan
+		add(lblTotal,			0,			0,			4,			1);
+		add(lblOperation,		0,			1,			4,			1);
+		add(lblNext,			0,			2,			4,			1);
 		
-		add(btn1,				0,			1);
-		add(btn2,				1,			1);
-		add(btn3,				2,			1);
+		add(btn1,				0,			3);
+		add(btn2,				1,			3);
+		add(btn3,				2,			3);
 		
-		add(btn4,				0,			2);
-		add(btn5,				1,			2);
-		add(btn6,				2,			2);
+		add(btn4,				0,			4);
+		add(btn5,				1,			4);
+		add(btn6,				2,			4);
 		
-		add(btn7,				0,			3);
-		add(btn8,				1,			3);
-		add(btn9,				2,			3);
+		add(btn7,				0,			5);
+		add(btn8,				1,			5);
+		add(btn9,				2,			5);
 		
-		add(btn0,				1,			4);
+		add(btnSign,			0,			6);
+		add(btn0,				1,			6);
 		
-		add(btnAdd,				3,			1);
-		add(btnSubtract,		3,			2);
-		add(btnMultiply,		3,			3);
-		add(btnDivide,			3,			4);
+		add(btnAdd,				3,			3);
+		add(btnSubtract,		3,			4);
+		add(btnMultiply,		3,			5);
+		add(btnDivide,			3,			6);
 		
-		add(btnEquals,			0,			5);
-		add(btnClear,			1,			5);
+		add(btnEquals,			0,			7);
+		add(btnClear,			1,			7);
+		
+		setStyle("-fx-background-color: #AFAFAFFF");
 	}
 }

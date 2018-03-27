@@ -22,6 +22,7 @@ public class Calculator extends Application {
 		stage.setScene(scene);
 		stage.setWidth(400);
 		stage.setHeight(400);
+		stage.setTitle("Calculator");
 		stage.show();
 	}
 	
